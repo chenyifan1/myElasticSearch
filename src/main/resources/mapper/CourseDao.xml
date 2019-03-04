@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhijin.dao.CourseDao">
+  <resultMap id="BaseResultMap" type="com.zhijin.entity.Course">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="creater" jdbcType="INTEGER" property="creater" />
+    <result column="creater_name" jdbcType="VARCHAR" property="createrName" />
+    <result column="is_delete" jdbcType="SMALLINT" property="isDelete" />
+    <result column="scope" jdbcType="SMALLINT" property="scope" />
+    <result column="total_time" jdbcType="INTEGER" property="totalTime" />
+    <result column="education_type" jdbcType="VARCHAR" property="educationType" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, content, cover, insert_time, update_time, status, creater, creater_name, is_delete, 
+    scope, total_time, education_type, code, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhijin.entity.Course">
+    insert into course (id, content, cover, 
+      insert_time, update_time, status, 
+      creater, creater_name, is_delete, 
+      scope, total_time, education_type, 
+      code, name)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}, 
+      #{creater,jdbcType=INTEGER}, #{createrName,jdbcType=VARCHAR}, #{isDelete,jdbcType=SMALLINT}, 
+      #{scope,jdbcType=SMALLINT}, #{totalTime,jdbcType=INTEGER}, #{educationType,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhijin.entity.Course">
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="cover != null">
+        cover,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="createrName != null">
+        creater_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="scope != null">
+        scope,
+      </if>
+      <if test="totalTime != null">
+        total_time,
+      </if>
+      <if test="educationType != null">
+        education_type,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=INTEGER},
+      </if>
+      <if test="createrName != null">
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=SMALLINT},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=SMALLINT},
+      </if>
+      <if test="totalTime != null">
+        #{totalTime,jdbcType=INTEGER},
+      </if>
+      <if test="educationType != null">
+        #{educationType,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhijin.entity.Course">
+    update course
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=INTEGER},
+      </if>
+      <if test="createrName != null">
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=SMALLINT},
+      </if>
+      <if test="scope != null">
+        scope = #{scope,jdbcType=SMALLINT},
+      </if>
+      <if test="totalTime != null">
+        total_time = #{totalTime,jdbcType=INTEGER},
+      </if>
+      <if test="educationType != null">
+        education_type = #{educationType,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhijin.entity.Course">
+    update course
+    set content = #{content,jdbcType=VARCHAR},
+      cover = #{cover,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=SMALLINT},
+      creater = #{creater,jdbcType=INTEGER},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=SMALLINT},
+      scope = #{scope,jdbcType=SMALLINT},
+      total_time = #{totalTime,jdbcType=INTEGER},
+      education_type = #{educationType,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
